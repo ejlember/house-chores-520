@@ -229,7 +229,7 @@ h1 { font-size: 20px; font-weight: 600; margin-bottom: 2px; }
 
 <script>
 const SUPABASE_URL = 'https://kiypweupnrokjbdeixnt.supabase.co';
-const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtpeXB3ZXVwbnJva2piZGVpeG50Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODIxNjY2NDYsImV4cCI6MjA5Nzc0MjY0Nn0.S-EQx1JI4z1OxclCA5B1R1RDann_7szVcr0V_796AyvA';
+const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtpeXB3ZXVwbnJva2piZGVpeG50Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODIxNjY2NDYsImV4cCI6MjA5Nzc0MjY0Nn0.S-EQx1JI4z1OxclC5B1R1RDann_7szVcr0V_796AyvA';
 const H = { 'apikey': SUPABASE_KEY, 'Authorization': 'Bearer ' + SUPABASE_KEY, 'Content-Type': 'application/json', 'Prefer': 'return=representation' };
 const api = path => SUPABASE_URL + '/rest/v1/' + path;
 
@@ -524,8 +524,9 @@ async function toggleChoreCheck(week_key, person, chore, checked) {
 }
 async function resetChores(week_key, person) {
   try {
-    await fetch(api('chore_checks?week_key=eq.' + week_key + '&person=eq.' + encodeURIComponent(person)), {method:'DELETE', headers:H});
-  } catch(e) {}
+    const url = api('chore_checks') + '?week_key=eq.' + encodeURIComponent(week_key) + '&person=eq.' + encodeURIComponent(person);
+    await fetch(url, {method:'DELETE', headers:H});
+  } catch(e) { console.error('Reset failed', e); }
 }
 
 // supabase: groceries
