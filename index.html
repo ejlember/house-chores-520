@@ -10,21 +10,14 @@
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
-  --bg: #f7f6f3;
-  --surface: #ffffff;
-  --surface2: #f0ede8;
-  --surface3: #e8e4de;
-  --text: #1c1b18;
-  --text2: #6b6860;
-  --text3: #a09d97;
-  --border: rgba(0,0,0,0.08);
-  --border2: rgba(0,0,0,0.15);
-  --r: 6px;
-  --rl: 10px;
-  --blue: #2d7dd2;   --blue-bg: #eaf2fb;  --blue-t: #1a4f8a;
-  --green: #1a8a5e;  --green-bg: #e4f5ee; --green-t: #0d5239;
-  --coral: #c94f28;  --coral-bg: #faeae4; --coral-t: #7a2a10;
-  --purple: #6b5fd4; --purple-bg: #eeecfb;--purple-t: #362e8a;
+  --bg: #f7f6f3; --surface: #ffffff; --surface2: #f0ede8; --surface3: #e8e4de;
+  --text: #1c1b18; --text2: #6b6860; --text3: #a09d97;
+  --border: rgba(0,0,0,0.08); --border2: rgba(0,0,0,0.15);
+  --r: 6px; --rl: 10px;
+  --blue: #2d7dd2; --blue-bg: #eaf2fb; --blue-t: #1a4f8a;
+  --green: #1a8a5e; --green-bg: #e4f5ee; --green-t: #0d5239;
+  --coral: #c94f28; --coral-bg: #faeae4; --coral-t: #7a2a10;
+  --purple: #6b5fd4; --purple-bg: #eeecfb; --purple-t: #362e8a;
   --panel-w: 320px;
 }
 @media (prefers-color-scheme: dark) {
@@ -38,40 +31,11 @@
     --purple-bg: #1a1640; --purple-t: #9d94e8;
   }
 }
-
 html, body { height: 100%; }
-body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  min-height: 100vh;
-  padding: 0;
-}
-
-/* WIDGET SHELL */
-.widget {
-  width: var(--panel-w);
-  min-height: 100vh;
-  background: var(--surface);
-  display: flex;
-  flex-direction: column;
-  border-right: 1px solid var(--border2);
-  box-shadow: 2px 0 24px rgba(0,0,0,0.08);
-}
-
-/* HEADER */
-.widget-header {
-  padding: 14px 14px 10px;
-  border-bottom: 1px solid var(--border);
-  flex-shrink: 0;
-}
-.widget-title { font-size: 13px; font-weight: 700; letter-spacing: .03em; color: var(--text); margin-bottom: 8px; display: flex; align-items: center; justify-content: space-between; }
-.widget-title span { font-weight: 400; font-size: 11px; color: var(--text3); letter-spacing: 0; }
-
-/* PEOPLE ROW */
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); display: flex; justify-content: center; align-items: flex-start; min-height: 100vh; padding: 0; }
+.widget { width: var(--panel-w); min-height: 100vh; background: var(--surface); display: flex; flex-direction: column; border-right: 1px solid var(--border2); box-shadow: 2px 0 24px rgba(0,0,0,0.08); }
+.widget-header { padding: 14px 14px 10px; border-bottom: 1px solid var(--border); flex-shrink: 0; }
+.widget-title { font-size: 13px; font-weight: 700; letter-spacing: .03em; color: var(--text); margin-bottom: 8px; }
 .people { display: flex; gap: 5px; }
 .person-btn { display: flex; align-items: center; gap: 5px; padding: 3px 7px 3px 4px; border-radius: 20px; border: 1px solid transparent; cursor: pointer; background: transparent; font-size: 11px; color: var(--text2); font-family: inherit; transition: all .12s; flex: 1; justify-content: center; }
 .person-btn:hover { background: var(--surface2); }
@@ -81,23 +45,15 @@ body {
 .av-a { background: var(--green-bg); color: var(--green-t); }
 .av-c { background: var(--coral-bg); color: var(--coral-t); }
 .av-k { background: var(--purple-bg); color: var(--purple-t); }
-
-/* TABS */
 .tabs { display: flex; border-bottom: 1px solid var(--border); flex-shrink: 0; }
 .tab-btn { flex: 1; padding: 8px 4px; border: none; background: transparent; font-size: 11px; font-weight: 500; color: var(--text3); cursor: pointer; font-family: inherit; border-bottom: 2px solid transparent; margin-bottom: -1px; transition: all .12s; }
 .tab-btn:hover { color: var(--text2); }
 .tab-btn.active { color: var(--text); border-bottom-color: var(--blue); }
 .tab-panel { display: none; flex: 1; overflow-y: auto; }
 .tab-panel.active { display: block; }
-
-/* SCROLLABLE CONTENT */
 .panel-body { padding: 10px 12px; }
-
-/* SECTION */
 .section { margin-bottom: 10px; }
-.section-title { font-size: 10px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--text3); margin-bottom: 6px; padding: 0 2px; }
-
-/* CALENDAR */
+.section-title { font-size: 10px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--text3); margin-bottom: 6px; padding: 0 2px; display: flex; align-items: center; justify-content: space-between; }
 .cal-nav { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
 .cal-nav button { background: transparent; border: 1px solid var(--border2); border-radius: var(--r); padding: 3px 8px; font-size: 11px; cursor: pointer; color: var(--text2); }
 .cal-month-label { font-size: 12px; font-weight: 600; color: var(--text); }
@@ -110,8 +66,6 @@ body {
 .cal-bar { width: 65%; height: 2px; border-radius: 2px; }
 .rdots { display: flex; gap: 2px; justify-content: center; }
 .rdot { width: 3px; height: 3px; border-radius: 50%; }
-
-/* DAY PANEL */
 .day-panel { background: var(--surface2); border-radius: var(--r); padding: 8px 10px; margin-bottom: 8px; }
 .day-panel-title { font-size: 11px; font-weight: 600; color: var(--text2); margin-bottom: 6px; }
 .rem-row { display: flex; align-items: flex-start; gap: 6px; padding: 4px 0; border-bottom: 1px solid var(--border); font-size: 11px; }
@@ -129,20 +83,40 @@ body {
 .badge-custom { background: var(--purple-bg); color: var(--purple-t); }
 .del-btn { background: none; border: none; cursor: pointer; color: var(--text3); font-size: 11px; padding: 1px 2px; margin-left: auto; flex-shrink: 0; }
 .del-btn:hover { color: #e24b4a; }
+.icon-btn { background: none; border: none; cursor: pointer; color: var(--text3); font-size: 11px; padding: 1px 3px; flex-shrink: 0; }
+.icon-btn:hover { color: var(--text2); }
 .add-rem { display: flex; gap: 5px; margin-top: 6px; }
 .add-rem input { flex: 1; font-size: 11px; padding: 5px 8px; border-radius: var(--r); border: 1px solid var(--border2); background: var(--surface); color: var(--text); font-family: inherit; }
 .add-rem input:focus { outline: none; border-color: var(--blue); }
 .add-rem button { padding: 5px 8px; border-radius: var(--r); border: 1px solid var(--border2); background: transparent; font-size: 11px; cursor: pointer; color: var(--text2); font-family: inherit; white-space: nowrap; }
 .add-rem button:hover { background: var(--surface); }
 .no-person { font-size: 10px; color: var(--text3); margin-top: 5px; }
-
-/* WEEK BANNER */
 .week-banner { background: var(--surface2); border-radius: var(--r); padding: 8px 10px; }
 .week-banner-label { font-size: 10px; color: var(--text3); margin-bottom: 5px; }
 .week-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; }
 .week-item { display: flex; align-items: center; gap: 4px; font-size: 11px; color: var(--text2); }
 
-/* CHORES TAB */
+/* bill edit */
+.bill-edit-row { display: flex; align-items: center; gap: 6px; padding: 5px 0; border-bottom: 1px solid var(--border); font-size: 11px; }
+.bill-edit-row:last-child { border-bottom: none; }
+.bill-edit-icon { font-size: 13px; flex-shrink: 0; color: var(--coral); }
+.bill-edit-label { flex: 1; color: var(--text); font-weight: 500; }
+.bill-edit-input { width: 70px; font-size: 11px; padding: 3px 6px; border-radius: var(--r); border: 1px solid var(--border2); background: var(--surface); color: var(--text); font-family: inherit; text-align: right; }
+.bill-edit-input:focus { outline: none; border-color: var(--blue); }
+.bill-save-btn { font-size: 10px; padding: 3px 8px; border-radius: var(--r); border: 1px solid var(--border2); background: transparent; cursor: pointer; color: var(--text2); font-family: inherit; }
+.bill-save-btn:hover { background: var(--surface2); }
+
+/* chore swap */
+.swap-panel { background: var(--surface2); border-radius: var(--r); padding: 8px 10px; margin-top: 8px; }
+.swap-title { font-size: 10px; font-weight: 600; color: var(--text2); margin-bottom: 6px; text-transform: uppercase; letter-spacing: .05em; }
+.swap-row { display: flex; align-items: center; gap: 6px; margin-bottom: 6px; }
+.swap-select { flex: 1; font-size: 11px; padding: 4px 6px; border-radius: var(--r); border: 1px solid var(--border2); background: var(--surface); color: var(--text); font-family: inherit; }
+.swap-btn { padding: 4px 10px; border-radius: var(--r); border: 1px solid var(--border2); background: transparent; font-size: 11px; cursor: pointer; color: var(--text2); font-family: inherit; }
+.swap-btn:hover { background: var(--surface); }
+.active-swap { display: flex; align-items: center; gap: 5px; font-size: 11px; color: var(--text2); padding: 4px 0; border-bottom: 1px solid var(--border); }
+.active-swap:last-of-type { border-bottom: none; }
+
+/* chores tab */
 .week-info-bar { background: var(--surface2); border-radius: var(--r); padding: 7px 10px; margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center; font-size: 11px; color: var(--text2); }
 .week-info-dates { font-size: 10px; color: var(--text3); }
 .prog-wrap { background: var(--surface3); border-radius: 3px; height: 4px; margin-bottom: 8px; overflow: hidden; }
@@ -161,15 +135,15 @@ body {
 .reset-btn:hover { background: var(--surface3); }
 .no-sel { background: var(--surface2); border-radius: var(--rl); padding: 20px 12px; text-align: center; font-size: 12px; color: var(--text3); }
 
-/* DUTIES TAB */
+/* duties */
 .duty-block { margin-bottom: 10px; }
-.duty-card { background: var(--surface2); border-radius: var(--rl); padding: 8px 10px; }
 .duty-head { font-size: 11px; font-weight: 600; color: var(--text); display: flex; align-items: center; gap: 5px; margin-bottom: 6px; }
+.duty-card { background: var(--surface2); border-radius: var(--rl); padding: 8px 10px; }
 .duty-item { display: flex; gap: 8px; padding: 7px 0; border-bottom: 1px solid var(--border); font-size: 11px; color: var(--text2); align-items: flex-start; line-height: 1.5; }
 .duty-item:last-child { border-bottom: none; padding-bottom: 2px; }
 .duty-icon { font-size: 12px; color: var(--text3); flex-shrink: 0; margin-top: 1px; }
 
-/* GROCERY */
+/* grocery */
 .grocery-row { display: flex; align-items: center; gap: 7px; padding: 6px 0; border-bottom: 1px solid var(--border); font-size: 12px; }
 .grocery-row:last-child { border-bottom: none; }
 .grocery-row input[type=checkbox] { width: 14px; height: 14px; flex-shrink: 0; cursor: pointer; accent-color: var(--blue); }
@@ -195,8 +169,6 @@ body {
 </head>
 <body>
 <div class="widget">
-
-  <!-- HEADER -->
   <div class="widget-header">
     <div class="widget-title">🏠 House</div>
     <div class="people" id="people">
@@ -206,8 +178,6 @@ body {
       <button class="person-btn" data-person="Keren"><span class="av av-k">K</span>Keren</button>
     </div>
   </div>
-
-  <!-- TABS -->
   <div class="tabs">
     <button class="tab-btn active" data-tab="calendar">Calendar</button>
     <button class="tab-btn" data-tab="chores">My chores</button>
@@ -228,8 +198,57 @@ body {
         <div id="week-detail" style="margin-top:8px;"></div>
       </div>
 
+      <!-- BILL EDITOR -->
       <div class="section">
-        <div class="section-title" style="display:flex;align-items:center;justify-content:space-between;">
+        <div class="section-title">Monthly bills</div>
+        <div class="duty-card">
+          <div class="bill-edit-row">
+            <i class="ti ti-home bill-edit-icon"></i>
+            <span class="bill-edit-label">Rent (each)</span>
+            <span style="font-size:11px;color:var(--text3);margin-right:2px;">$</span>
+            <input class="bill-edit-input" id="bill-rent" type="number" placeholder="—" min="0" />
+          </div>
+          <div class="bill-edit-row">
+            <i class="ti ti-wifi bill-edit-icon"></i>
+            <span class="bill-edit-label">Internet (each)</span>
+            <span style="font-size:11px;color:var(--text3);margin-right:2px;">$</span>
+            <input class="bill-edit-input" id="bill-internet" type="number" placeholder="—" min="0" />
+          </div>
+          <div class="bill-edit-row">
+            <i class="ti ti-bolt bill-edit-icon"></i>
+            <span class="bill-edit-label">Electricity (each)</span>
+            <span style="font-size:11px;color:var(--text3);margin-right:2px;">$</span>
+            <input class="bill-edit-input" id="bill-electric" type="number" placeholder="—" min="0" />
+          </div>
+          <div style="display:flex;justify-content:flex-end;margin-top:7px;">
+            <button class="bill-save-btn" id="bill-save-btn">Save amounts</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- CHORE SWAP -->
+      <div class="section">
+        <div class="section-title">Swap chores this week</div>
+        <div class="swap-panel">
+          <div class="swap-row">
+            <select class="swap-select" id="swap-a">
+              <option value="">Person A</option>
+              <option>Emily</option><option>Alex</option><option>Chae</option><option>Keren</option>
+            </select>
+            <span style="font-size:11px;color:var(--text3);">↔</span>
+            <select class="swap-select" id="swap-b">
+              <option value="">Person B</option>
+              <option>Emily</option><option>Alex</option><option>Chae</option><option>Keren</option>
+            </select>
+            <button class="swap-btn" id="swap-submit">Swap</button>
+          </div>
+          <div id="active-swaps"></div>
+        </div>
+      </div>
+
+      <!-- GROCERY -->
+      <div class="section">
+        <div class="section-title">
           Grocery list
           <span class="sync-pill"><span class="sdot" id="sync-dot"></span><span id="sync-label">connecting</span></span>
         </div>
@@ -294,13 +313,13 @@ body {
       </div>
     </div>
   </div>
-
 </div>
+
 <script>
-const SB_URL = 'https://kiypweupnrokjbdeixnt.supabase.co';
-const SB_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtpeXB3ZXVwbnJva2piZGVpeG50Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODIxNjY2NDYsImV4cCI6MjA5Nzc0MjY0Nn0.S-EQx1JI4z1OxclC5B1R1RDann_7szVcr0V_796AyvA';
-const H = { 'apikey':SB_KEY, 'Authorization':'Bearer '+SB_KEY, 'Content-Type':'application/json', 'Prefer':'return=representation' };
-const api = p => SB_URL + '/rest/v1/' + p;
+const SB = 'https://kiypweupnrokjbdeixnt.supabase.co';
+const KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtpeXB3ZXVwbnJva2piZGVpeG50Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODIxNjY2NDYsImV4cCI6MjA5Nzc0MjY0Nn0.S-EQx1JI4z1OxclC5B1R1RDann_7szVcr0V_796AyvA';
+const H = {'apikey':KEY,'Authorization':'Bearer '+KEY,'Content-Type':'application/json','Prefer':'return=representation'};
+const api = p => SB+'/rest/v1/'+p;
 
 const PEOPLE = [
   {name:'Emily',init:'E',cls:'av-e',color:'#2d7dd2'},
@@ -308,34 +327,50 @@ const PEOPLE = [
   {name:'Chae', init:'C',cls:'av-c',color:'#c94f28'},
   {name:'Keren',init:'K',cls:'av-k',color:'#6b5fd4'},
 ];
-const CHORES = ['Kitchen','Bathroom','Living room','Trash'];
-const CICONS = ['ti-chef-hat','ti-droplet','ti-sofa','ti-trash'];
-const DUTIES = [
+const CHORES=['Kitchen','Bathroom','Living room','Trash'];
+const CICONS=['ti-chef-hat','ti-droplet','ti-sofa','ti-trash'];
+const DUTIES=[
   ['Wipe down counters and stovetop','Clean microwave and appliances','Empty, scrub, and dry the sink','Sweep and mop the floor','Replace communal supplies & square up'],
   ['Wipe down toilet seat if needed','Wipe sink, faucet, and mirror','Wipe shower/tub if needed','Sweep and mop the floor','Restock toilet paper if low'],
   ['Vacuum or sweep all floors','Wipe down tables and surfaces','Dust shelves, TV stand, electronics','Straighten cushions and shared clutter'],
   ['Empty all bins in common areas','Carry bags to dumpster','Reline all bins with fresh bags','Put recycling out on collection day'],
 ];
-const ROTATION = [[2,0,3,1],[0,3,1,2],[3,1,2,0],[1,2,0,3]];
-const ANCHOR_SUN = new Date(2026,5,21);
-const MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-const today = new Date();
+const ROTATION=[[2,0,3,1],[0,3,1,2],[3,1,2,0],[1,2,0,3]];
+const ANCHOR_SUN=new Date(2026,5,21);
+const MONTHS=['January','February','March','April','May','June','July','August','September','October','November','December'];
+const today=new Date();
 
-let viewY = today.getFullYear(), viewM = today.getMonth(), selDay = null;
-let curPerson = null, customRems = [], groceries = [], choreChecks = {};
+let viewY=today.getFullYear(),viewM=today.getMonth(),selDay=null;
+let curPerson=null,customRems=[],groceries=[],choreChecks={};
+let billAmounts={rent:'',internet:'',electric:''};
+let swaps=[],skipped=[];
 
-function sunOf(d) { const x=new Date(d); x.setHours(0,0,0,0); x.setDate(x.getDate()-x.getDay()); return x; }
-function wkIdx(d) { return Math.round((sunOf(d)-ANCHOR_SUN)/(7*864e5)); }
-function rotIdx(d) { return ((wkIdx(d)%4)+4)%4; }
-function wkKey(d) { return sunOf(d).toISOString().slice(0,10); }
-function dateRange(d) { const s=sunOf(d),e=new Date(s); e.setDate(e.getDate()+6); return (s.getMonth()+1)+'/'+s.getDate()+' – '+(e.getMonth()+1)+'/'+e.getDate(); }
-function pad2(n) { return String(n).padStart(2,'0'); }
-function toDS(y,m,d) { return y+'-'+pad2(m)+'-'+pad2(d); }
+function sunOf(d){const x=new Date(d);x.setHours(0,0,0,0);x.setDate(x.getDate()-x.getDay());return x;}
+function wkIdx(d){return Math.round((sunOf(d)-ANCHOR_SUN)/(7*864e5));}
+function rotIdx(d){return((wkIdx(d)%4)+4)%4;}
+function wkKey(d){return sunOf(d).toISOString().slice(0,10);}
+function dateRange(d){const s=sunOf(d),e=new Date(s);e.setDate(e.getDate()+6);return(s.getMonth()+1)+'/'+s.getDate()+' – '+(e.getMonth()+1)+'/'+e.getDate();}
+function pad2(n){return String(n).padStart(2,'0');}
+function toDS(y,m,d){return y+'-'+pad2(m)+'-'+pad2(d);}
+
+// apply swaps to a rotation row for a given week
+function applySwaps(ri, wk) {
+  let row = [...ROTATION[ri]];
+  const weekSwaps = swaps.filter(s => s.week_key === wk);
+  weekSwaps.forEach(s => {
+    const iA = PEOPLE.findIndex(p=>p.name===s.person_a);
+    const iB = PEOPLE.findIndex(p=>p.name===s.person_b);
+    if(iA<0||iB<0) return;
+    const posA = row.indexOf(iA), posB = row.indexOf(iB);
+    if(posA>=0&&posB>=0){[row[posA],row[posB]]=[row[posB],row[posA]];}
+  });
+  return row;
+}
 
 // person select
-document.querySelectorAll('.person-btn').forEach(btn => {
+document.querySelectorAll('.person-btn').forEach(btn=>{
   btn.addEventListener('click',()=>{
-    curPerson = curPerson===btn.dataset.person ? null : btn.dataset.person;
+    curPerson=curPerson===btn.dataset.person?null:btn.dataset.person;
     document.querySelectorAll('.person-btn').forEach(b=>b.classList.toggle('active',b.dataset.person===curPerson));
     renderDayPanel();
     if(document.getElementById('tab-chores').classList.contains('active')) renderChoresTab();
@@ -354,44 +389,55 @@ document.querySelectorAll('.tab-btn').forEach(btn=>{
 });
 
 // built-in reminders
-function builtins(y,m,d) {
-  const date=new Date(y,m,d), r=[];
+function builtins(y,m,d){
+  const date=new Date(y,m,d),r=[];
   if(d===1){
-    r.push({type:'bill',icon:'ti-home',  label:'Rent due',              sub:'Everyone pays landlord today'});
-    r.push({type:'bill',icon:'ti-wifi',  label:'Internet — pay Emily',  sub:'Monthly internet share'});
-    r.push({type:'bill',icon:'ti-bolt',  label:'Electricity — pay Alex',sub:'Monthly electricity share'});
+    const rent=billAmounts.rent?'$'+billAmounts.rent+' each':'';
+    const inet=billAmounts.internet?'$'+billAmounts.internet+' each':'';
+    const elec=billAmounts.electric?'$'+billAmounts.electric+' each':'';
+    r.push({type:'bill',icon:'ti-home',  label:'Rent due',              sub:rent||'Everyone pays landlord today', editable:'rent'});
+    r.push({type:'bill',icon:'ti-wifi',  label:'Internet — pay Emily',  sub:inet||'Monthly internet share', editable:'internet'});
+    r.push({type:'bill',icon:'ti-bolt',  label:'Electricity — pay Alex',sub:elec||'Monthly electricity share', editable:'electric'});
   }
   if(date.getDay()===6){
-    const ri=rotIdx(date);
-    r.push({type:'settle',icon:'ti-shopping-cart',label:'Settle groceries + supplies',sub:'Square up with '+PEOPLE[ROTATION[ri][0]].name});
+    const wk=wkKey(date);
+    const isSkipped=skipped.some(s=>s.week_key===wk);
+    if(!isSkipped){
+      const ri=rotIdx(date);
+      const row=applySwaps(ri,wk);
+      r.push({type:'settle',icon:'ti-shopping-cart',label:'Settle groceries + supplies',sub:'Square up with '+PEOPLE[row[0]].name,skippable:true,wk});
+    }
   }
   return r;
 }
 
-function renderCalendar() {
-  document.getElementById('cal-month-label').textContent = MONTHS[viewM]+' '+viewY;
-  const grid=document.getElementById('cal-grid'); grid.innerHTML='';
-  ['S','M','T','W','T','F','S'].forEach(d=>{ const el=document.createElement('div'); el.className='cal-dow'; el.textContent=d; grid.appendChild(el); });
-  const first=new Date(viewY,viewM,1).getDay(), last=new Date(viewY,viewM+1,0).getDate();
+function renderCalendar(){
+  document.getElementById('cal-month-label').textContent=MONTHS[viewM]+' '+viewY;
+  const grid=document.getElementById('cal-grid');grid.innerHTML='';
+  ['S','M','T','W','T','F','S'].forEach(d=>{const el=document.createElement('div');el.className='cal-dow';el.textContent=d;grid.appendChild(el);});
+  const first=new Date(viewY,viewM,1).getDay(),last=new Date(viewY,viewM+1,0).getDate();
   for(let i=0;i<first;i++){const el=document.createElement('div');el.className='cal-day';grid.appendChild(el);}
   for(let d=1;d<=last;d++){
     const date=new Date(viewY,viewM,d);
-    const ri=rotIdx(date), kp=PEOPLE[ROTATION[ri][0]];
+    const wk=wkKey(date);
+    const ri=rotIdx(date);
+    const row=applySwaps(ri,wk);
+    const kp=PEOPLE[row[0]];
     const bs=builtins(viewY,viewM,d);
     const ds=toDS(viewY,viewM+1,d);
     const cs=customRems.filter(r=>r.date===ds);
-    const el=document.createElement('div'); el.className='cal-day';
-    if(date.toDateString()===today.toDateString()) el.classList.add('today');
-    if(selDay===d) el.classList.add('sel');
-    const num=document.createElement('span'); num.textContent=d; el.appendChild(num);
-    const bar=document.createElement('div'); bar.className='cal-bar'; bar.style.background=kp.color; el.appendChild(bar);
+    const el=document.createElement('div');el.className='cal-day';
+    if(date.toDateString()===today.toDateString())el.classList.add('today');
+    if(selDay===d)el.classList.add('sel');
+    const num=document.createElement('span');num.textContent=d;el.appendChild(num);
+    const bar=document.createElement('div');bar.className='cal-bar';bar.style.background=kp.color;el.appendChild(bar);
     if(bs.length||cs.length){
-      const dots=document.createElement('div'); dots.className='rdots';
+      const dots=document.createElement('div');dots.className='rdots';
       bs.forEach(r=>{const dot=document.createElement('div');dot.className='rdot';dot.style.background=r.type==='bill'?'#c94f28':'#1a8a5e';dots.appendChild(dot);});
       cs.forEach(()=>{const dot=document.createElement('div');dot.className='rdot';dot.style.background='#6b5fd4';dots.appendChild(dot);});
       el.appendChild(dots);
     }
-    el.addEventListener('click',()=>{ selDay=(selDay===d)?null:d; renderCalendar(); renderDayPanel(); });
+    el.addEventListener('click',()=>{selDay=(selDay===d)?null:d;renderCalendar();renderDayPanel();});
     grid.appendChild(el);
   }
   renderWeekBanner();
@@ -403,16 +449,24 @@ function renderDayPanel(){
   const bs=builtins(viewY,viewM,selDay);
   const ds=toDS(viewY,viewM+1,selDay);
   const cs=customRems.filter(r=>r.date===ds);
-  const wrap=document.createElement('div'); wrap.className='day-panel'; wrap.style.marginTop='8px';
-  const title=document.createElement('div'); title.className='day-panel-title'; title.textContent=MONTHS[viewM]+' '+selDay; wrap.appendChild(title);
+  const wrap=document.createElement('div');wrap.className='day-panel';wrap.style.marginTop='8px';
+  const title=document.createElement('div');title.className='day-panel-title';title.textContent=MONTHS[viewM]+' '+selDay;wrap.appendChild(title);
   if(!bs.length&&!cs.length){const e=document.createElement('div');e.style.cssText='font-size:11px;color:var(--text3);padding:2px 0 4px;';e.textContent='No reminders yet.';wrap.appendChild(e);}
+
   bs.forEach(r=>{
     const row=document.createElement('div');row.className='rem-row';
     const ic=document.createElement('i');ic.className='ti '+r.icon+' rem-icon '+r.type;
     const body=document.createElement('div');body.className='rem-body';
     body.innerHTML='<div class="rem-title">'+r.label+'<span class="badge badge-'+r.type+'">'+r.type+'</span></div>'+(r.sub?'<div class="rem-sub">'+r.sub+'</div>':'');
-    row.appendChild(ic);row.appendChild(body);wrap.appendChild(row);
+    row.appendChild(ic);row.appendChild(body);
+    if(r.skippable){
+      const del=document.createElement('button');del.className='del-btn';del.title='Skip this week';del.innerHTML='<i class="ti ti-x"></i>';
+      del.addEventListener('click',()=>skipSettlement(r.wk));
+      row.appendChild(del);
+    }
+    wrap.appendChild(row);
   });
+
   cs.forEach(r=>{
     const row=document.createElement('div');row.className='rem-row';
     const ic=document.createElement('i');ic.className='ti ti-bell rem-icon custom';
@@ -422,6 +476,7 @@ function renderDayPanel(){
     if(curPerson===r.person){const del=document.createElement('button');del.className='del-btn';del.innerHTML='<i class="ti ti-x"></i>';del.addEventListener('click',()=>deleteRem(r.id));row.appendChild(del);}
     wrap.appendChild(row);
   });
+
   const addRow=document.createElement('div');addRow.className='add-rem';
   if(curPerson){
     const inp=document.createElement('input');inp.type='text';inp.placeholder='Add reminder...';
@@ -438,12 +493,14 @@ function renderDayPanel(){
 
 function renderWeekBanner(){
   const el=document.getElementById('week-detail');
+  const wk=wkKey(today);
   const ri=rotIdx(today);
+  const row=applySwaps(ri,wk);
   const banner=document.createElement('div');banner.className='week-banner';
   banner.innerHTML='<div class="week-banner-label">This week (Week '+(ri+1)+') · '+dateRange(today)+'</div>';
   const g=document.createElement('div');g.className='week-grid';
   CHORES.forEach((c,ci)=>{
-    const p=PEOPLE[ROTATION[ri][ci]];
+    const p=PEOPLE[row[ci]];
     const item=document.createElement('div');item.className='week-item';
     item.innerHTML='<i class="ti '+CICONS[ci]+'" style="font-size:12px;color:var(--text3);"></i><span style="flex:1;">'+c+'</span><span class="av '+p.cls+'" style="width:18px;height:18px;font-size:9px;">'+p.init+'</span>';
     g.appendChild(item);
@@ -458,9 +515,11 @@ function renderChoresTab(){
     const n=document.createElement('div');n.className='no-sel';n.textContent='Select your name at the top to see your chores.';
     container.appendChild(n);return;
   }
-  const ri=rotIdx(today), wk=wkKey(today);
-  const pIdx=PEOPLE.findIndex(p=>p.name===curPerson), person=PEOPLE[pIdx];
-  const choreIdx=ROTATION[ri].indexOf(pIdx);
+  const wk=wkKey(today);
+  const ri=rotIdx(today);
+  const row=applySwaps(ri,wk);
+  const pIdx=PEOPLE.findIndex(p=>p.name===curPerson),person=PEOPLE[pIdx];
+  const choreIdx=row.indexOf(pIdx);
   const duties=DUTIES[choreIdx];
   const checked=duties.filter(d=>choreChecks[wk+'|'+curPerson+'|'+d]).length;
   const pct=Math.round((checked/duties.length)*100);
@@ -481,7 +540,7 @@ function renderChoresTab(){
 
   duties.forEach(duty=>{
     const isChk=!!choreChecks[wk+'|'+curPerson+'|'+duty];
-    const row=document.createElement('div');row.className='chore-check';
+    const row2=document.createElement('div');row2.className='chore-check';
     const cb=document.createElement('input');cb.type='checkbox';cb.checked=isChk;
     const lbl=document.createElement('span');lbl.className='chore-lbl'+(isChk?' done':'');lbl.textContent=duty;
     cb.addEventListener('change',()=>{
@@ -492,7 +551,7 @@ function renderChoresTab(){
       pbf.style.width=np+'%';pbf.style.background=np===100?'var(--green)':'var(--blue)';
       toggleCheck(wk,curPerson,duty,cb.checked);
     });
-    row.appendChild(cb);row.appendChild(lbl);card.appendChild(row);
+    row2.appendChild(cb);row2.appendChild(lbl);card.appendChild(row2);
   });
 
   const rr=document.createElement('div');rr.className='reset-row';
@@ -502,16 +561,99 @@ function renderChoresTab(){
   container.appendChild(card);
 }
 
-// supabase
+function renderSwaps(){
+  const container=document.getElementById('active-swaps');
+  container.innerHTML='';
+  const wk=wkKey(today);
+  const thisWeek=swaps.filter(s=>s.week_key===wk);
+  if(!thisWeek.length){
+    const e=document.createElement('div');e.style.cssText='font-size:10px;color:var(--text3);padding:2px 0;';e.textContent='No swaps this week.';container.appendChild(e);return;
+  }
+  thisWeek.forEach(s=>{
+    const row=document.createElement('div');row.className='active-swap';
+    row.innerHTML='<i class="ti ti-arrows-exchange" style="font-size:12px;color:var(--text3);"></i><span style="flex:1;">'+s.person_a+' ↔ '+s.person_b+'</span>';
+    const del=document.createElement('button');del.className='del-btn';del.innerHTML='<i class="ti ti-x"></i>';
+    del.addEventListener('click',()=>deleteSwap(s.id));
+    row.appendChild(del);container.appendChild(row);
+  });
+}
+
+// bill amounts
+async function fetchBills(){
+  try{
+    const r=await fetch(api('settings?key=in.(bill_rent,bill_internet,bill_electric)'),{headers:H});
+    if(!r.ok)throw 0;
+    const data=await r.json();
+    data.forEach(row=>{
+      if(row.key==='bill_rent') billAmounts.rent=row.value;
+      if(row.key==='bill_internet') billAmounts.internet=row.value;
+      if(row.key==='bill_electric') billAmounts.electric=row.value;
+    });
+    document.getElementById('bill-rent').value=billAmounts.rent||'';
+    document.getElementById('bill-internet').value=billAmounts.internet||'';
+    document.getElementById('bill-electric').value=billAmounts.electric||'';
+  }catch(e){}
+}
+async function saveBills(){
+  const rent=document.getElementById('bill-rent').value.trim();
+  const internet=document.getElementById('bill-internet').value.trim();
+  const electric=document.getElementById('bill-electric').value.trim();
+  const rows=[{key:'bill_rent',value:rent||'0'},{key:'bill_internet',value:internet||'0'},{key:'bill_electric',value:electric||'0'}];
+  try{
+    await Promise.all(rows.map(row=>fetch(api('settings'),{method:'POST',headers:{...H,'Prefer':'resolution=merge-duplicates,return=representation'},body:JSON.stringify(row)})));
+    billAmounts={rent,internet,electric};
+    const btn=document.getElementById('bill-save-btn');
+    btn.textContent='Saved ✓';setTimeout(()=>btn.textContent='Save amounts',1500);
+    renderCalendar();renderDayPanel();
+  }catch(e){}
+}
+document.getElementById('bill-save-btn').addEventListener('click',saveBills);
+
+// swaps
+async function fetchSwaps(){
+  try{
+    const wk=wkKey(today);
+    const r=await fetch(api('chore_swaps?week_key=eq.'+wk),{headers:H});
+    if(!r.ok)throw 0;
+    swaps=await r.json();
+    renderSwaps();renderWeekBanner();
+    if(document.getElementById('tab-chores').classList.contains('active'))renderChoresTab();
+  }catch(e){}
+}
+async function addSwap(){
+  const a=document.getElementById('swap-a').value;
+  const b=document.getElementById('swap-b').value;
+  if(!a||!b||a===b){alert('Please select two different people.');return;}
+  const wk=wkKey(today);
+  try{
+    await fetch(api('chore_swaps'),{method:'POST',headers:{...H,'Prefer':'resolution=merge-duplicates,return=representation'},body:JSON.stringify({week_key:wk,person_a:a,person_b:b})});
+    await fetchSwaps();
+    document.getElementById('swap-a').value='';
+    document.getElementById('swap-b').value='';
+  }catch(e){}
+}
+async function deleteSwap(id){
+  try{await fetch(api('chore_swaps?id=eq.'+id),{method:'DELETE',headers:H});await fetchSwaps();}catch(e){}
+}
+document.getElementById('swap-submit').addEventListener('click',addSwap);
+
+// skipped settlements
+async function fetchSkipped(){
+  try{const r=await fetch(api('skipped_settlements'),{headers:H});if(!r.ok)throw 0;skipped=await r.json();renderCalendar();renderDayPanel();}catch(e){}
+}
+async function skipSettlement(wk){
+  try{await fetch(api('skipped_settlements'),{method:'POST',headers:{...H,'Prefer':'resolution=merge-duplicates'},body:JSON.stringify({week_key:wk})});await fetchSkipped();}catch(e){}
+}
+
+// reminders
 async function fetchRems(){
   try{
     const r=await fetch(api('reminders?order=created_at.asc'),{headers:H});
     if(!r.ok)throw 0;
     customRems=await r.json();
     renderCalendar();
-    // only re-render day panel if user is not actively typing in it
     const inp=document.querySelector('.add-rem input');
-    if(!inp || document.activeElement!==inp) renderDayPanel();
+    if(!inp||document.activeElement!==inp)renderDayPanel();
   }catch(e){}
 }
 async function addRem(date,label){
@@ -520,6 +662,8 @@ async function addRem(date,label){
 async function deleteRem(id){
   try{await fetch(api('reminders?id=eq.'+id),{method:'DELETE',headers:H});await fetchRems();}catch(e){}
 }
+
+// chore checks
 async function fetchChoreChecks(){
   try{
     const wk=wkKey(today);
@@ -537,6 +681,8 @@ async function toggleCheck(week_key,person,chore,checked){
 async function resetChores(week_key,person){
   try{await fetch(api('chore_checks')+'?week_key=eq.'+encodeURIComponent(week_key)+'&person=eq.'+encodeURIComponent(person),{method:'DELETE',headers:H});}catch(e){}
 }
+
+// groceries
 async function fetchGroceries(){
   try{
     const r=await fetch(api('groceries?order=created_at.asc'),{headers:H});
@@ -578,9 +724,13 @@ document.getElementById('clear-done-btn').addEventListener('click',clearDone);
 document.getElementById('prev-btn').addEventListener('click',()=>{viewM--;if(viewM<0){viewM=11;viewY--;}selDay=null;renderCalendar();renderDayPanel();});
 document.getElementById('next-btn').addEventListener('click',()=>{viewM++;if(viewM>11){viewM=0;viewY++;}selDay=null;renderCalendar();renderDayPanel();});
 
+// init
 renderCalendar();
-fetchRems();fetchGroceries();fetchChoreChecks();
-setInterval(()=>{fetchGroceries();fetchRems();if(document.getElementById('tab-chores').classList.contains('active'))fetchChoreChecks();},10000);
+fetchBills();fetchRems();fetchGroceries();fetchChoreChecks();fetchSwaps();fetchSkipped();
+setInterval(()=>{
+  fetchGroceries();fetchRems();fetchSwaps();fetchSkipped();
+  if(document.getElementById('tab-chores').classList.contains('active'))fetchChoreChecks();
+},10000);
 </script>
 </body>
 </html>
