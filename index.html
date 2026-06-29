@@ -205,7 +205,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
         <div id="day-panel"></div>
 
         <!-- BILL EDITOR (collapsible) — shown below reminders -->
-        <div id="bills-collapsible" style="margin-top:6px;display:none;">
+        <div id="bills-collapsible" style="margin-top:6px;">
           <button class="collapsible-btn" id="bills-toggle">
             <span><i class="ti ti-receipt" style="font-size:12px;margin-right:5px;vertical-align:-1px;"></i>Edit bill amounts</span>
             <i class="ti ti-chevron-down caret"></i>
@@ -464,14 +464,7 @@ function renderCalendar(){
 
 function renderDayPanel(){
   const panel=document.getElementById('day-panel');
-  const billsWrap=document.getElementById('bills-collapsible');
-  if(!selDay){
-    panel.innerHTML='';
-    if(billsWrap) billsWrap.style.display='none';
-    return;
-  }
-  // show bill editor only when day 1 is selected
-  if(billsWrap) billsWrap.style.display=(selDay===1)?'block':'none';
+  if(!selDay){panel.innerHTML='';return;}
   const bs=builtins(viewY,viewM,selDay);
   const ds=toDS(viewY,viewM+1,selDay);
   const cs=customRems.filter(r=>r.date===ds);
