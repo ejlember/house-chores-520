@@ -203,40 +203,41 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
         </div>
         <div class="cal-grid" id="cal-grid"></div>
         <div id="day-panel"></div>
-        <div id="week-detail" style="margin-top:8px;"></div>
-      </div>
 
-      <!-- BILL EDITOR (collapsible) -->
-      <div class="section">
-        <button class="collapsible-btn" id="bills-toggle">
-          <span><i class="ti ti-receipt" style="font-size:12px;margin-right:5px;vertical-align:-1px;"></i>Monthly bills</span>
-          <i class="ti ti-chevron-down caret"></i>
-        </button>
-        <div class="collapsible-body" id="bills-body">
-          <div class="duty-card">
-            <div class="bill-edit-row">
-              <i class="ti ti-home bill-edit-icon"></i>
-              <span class="bill-edit-label">Rent (each)</span>
-              <span style="font-size:11px;color:var(--text3);margin-right:2px;">$</span>
-              <input class="bill-edit-input" id="bill-rent" type="number" placeholder="—" min="0" />
-            </div>
-            <div class="bill-edit-row">
-              <i class="ti ti-wifi bill-edit-icon"></i>
-              <span class="bill-edit-label">Internet (each)</span>
-              <span style="font-size:11px;color:var(--text3);margin-right:2px;">$</span>
-              <input class="bill-edit-input" id="bill-internet" type="number" placeholder="—" min="0" />
-            </div>
-            <div class="bill-edit-row">
-              <i class="ti ti-bolt bill-edit-icon"></i>
-              <span class="bill-edit-label">Electricity (each)</span>
-              <span style="font-size:11px;color:var(--text3);margin-right:2px;">$</span>
-              <input class="bill-edit-input" id="bill-electric" type="number" placeholder="—" min="0" />
-            </div>
-            <div style="display:flex;justify-content:flex-end;margin-top:7px;">
-              <button class="bill-save-btn" id="bill-save-btn">Save amounts</button>
+        <!-- BILL EDITOR (collapsible) — shown below reminders -->
+        <div id="bills-collapsible" style="margin-top:6px;display:none;">
+          <button class="collapsible-btn" id="bills-toggle">
+            <span><i class="ti ti-receipt" style="font-size:12px;margin-right:5px;vertical-align:-1px;"></i>Edit bill amounts</span>
+            <i class="ti ti-chevron-down caret"></i>
+          </button>
+          <div class="collapsible-body" id="bills-body">
+            <div class="duty-card">
+              <div class="bill-edit-row">
+                <i class="ti ti-home bill-edit-icon"></i>
+                <span class="bill-edit-label">Rent (each)</span>
+                <span style="font-size:11px;color:var(--text3);margin-right:2px;">$</span>
+                <input class="bill-edit-input" id="bill-rent" type="number" placeholder="—" min="0" />
+              </div>
+              <div class="bill-edit-row">
+                <i class="ti ti-wifi bill-edit-icon"></i>
+                <span class="bill-edit-label">Internet (each)</span>
+                <span style="font-size:11px;color:var(--text3);margin-right:2px;">$</span>
+                <input class="bill-edit-input" id="bill-internet" type="number" placeholder="—" min="0" />
+              </div>
+              <div class="bill-edit-row">
+                <i class="ti ti-bolt bill-edit-icon"></i>
+                <span class="bill-edit-label">Electricity (each)</span>
+                <span style="font-size:11px;color:var(--text3);margin-right:2px;">$</span>
+                <input class="bill-edit-input" id="bill-electric" type="number" placeholder="—" min="0" />
+              </div>
+              <div style="display:flex;justify-content:flex-end;margin-top:7px;">
+                <button class="bill-save-btn" id="bill-save-btn">Save amounts</button>
+              </div>
             </div>
           </div>
         </div>
+
+        <div id="week-detail" style="margin-top:8px;"></div>
       </div>
 
       <!-- CHORE SWAP (collapsible) -->
@@ -463,7 +464,14 @@ function renderCalendar(){
 
 function renderDayPanel(){
   const panel=document.getElementById('day-panel');
-  if(!selDay){panel.innerHTML='';return;}
+  const billsWrap=document.getElementById('bills-collapsible');
+  if(!selDay){
+    panel.innerHTML='';
+    if(billsWrap) billsWrap.style.display='none';
+    return;
+  }
+  // show bill editor only when day 1 is selected
+  if(billsWrap) billsWrap.style.display=(selDay===1)?'block':'none';
   const bs=builtins(viewY,viewM,selDay);
   const ds=toDS(viewY,viewM+1,selDay);
   const cs=customRems.filter(r=>r.date===ds);
@@ -743,13 +751,13 @@ document.getElementById('prev-btn').addEventListener('click',()=>{viewM--;if(vie
 document.getElementById('next-btn').addEventListener('click',()=>{viewM++;if(viewM>11){viewM=0;viewY++;}selDay=null;renderCalendar();renderDayPanel();});
 
 // collapsibles
-document.getElementById('bills-toggle').addEventListener('click', function() {
-  this.classList.toggle('open');
-  document.getElementById('bills-body').classList.toggle('open');
-});
-document.getElementById('swap-toggle').addEventListener('click', function() {
-  this.classList.toggle('open');
-  document.getElementById('swap-body').classList.toggle('open');
+document.addEventListener('click', function(e) {
+  const btn = e.target.closest('.collapsible-btn');
+  if(!btn) return;
+  btn.classList.toggle('open');
+  const bodyId = btn.id.replace('-toggle','-body');
+  const body = document.getElementById(bodyId);
+  if(body) body.classList.toggle('open');
 });
 
 // init
