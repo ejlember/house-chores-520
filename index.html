@@ -96,6 +96,14 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
 .week-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; }
 .week-item { display: flex; align-items: center; gap: 4px; font-size: 11px; color: var(--text2); }
 
+/* collapsible sections */
+.collapsible-btn { width: 100%; display: flex; align-items: center; justify-content: space-between; padding: 7px 10px; border-radius: var(--r); border: 1px solid var(--border2); background: var(--surface2); font-size: 11px; font-weight: 500; color: var(--text2); cursor: pointer; font-family: inherit; margin-bottom: 6px; }
+.collapsible-btn:hover { background: var(--surface3); }
+.collapsible-btn .caret { font-size: 12px; transition: transform .2s; color: var(--text3); }
+.collapsible-btn.open .caret { transform: rotate(180deg); }
+.collapsible-body { display: none; margin-bottom: 8px; }
+.collapsible-body.open { display: block; }
+
 /* bill edit */
 .bill-edit-row { display: flex; align-items: center; gap: 6px; padding: 5px 0; border-bottom: 1px solid var(--border); font-size: 11px; }
 .bill-edit-row:last-child { border-bottom: none; }
@@ -198,51 +206,61 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
         <div id="week-detail" style="margin-top:8px;"></div>
       </div>
 
-      <!-- BILL EDITOR -->
+      <!-- BILL EDITOR (collapsible) -->
       <div class="section">
-        <div class="section-title">Monthly bills</div>
-        <div class="duty-card">
-          <div class="bill-edit-row">
-            <i class="ti ti-home bill-edit-icon"></i>
-            <span class="bill-edit-label">Rent (each)</span>
-            <span style="font-size:11px;color:var(--text3);margin-right:2px;">$</span>
-            <input class="bill-edit-input" id="bill-rent" type="number" placeholder="—" min="0" />
-          </div>
-          <div class="bill-edit-row">
-            <i class="ti ti-wifi bill-edit-icon"></i>
-            <span class="bill-edit-label">Internet (each)</span>
-            <span style="font-size:11px;color:var(--text3);margin-right:2px;">$</span>
-            <input class="bill-edit-input" id="bill-internet" type="number" placeholder="—" min="0" />
-          </div>
-          <div class="bill-edit-row">
-            <i class="ti ti-bolt bill-edit-icon"></i>
-            <span class="bill-edit-label">Electricity (each)</span>
-            <span style="font-size:11px;color:var(--text3);margin-right:2px;">$</span>
-            <input class="bill-edit-input" id="bill-electric" type="number" placeholder="—" min="0" />
-          </div>
-          <div style="display:flex;justify-content:flex-end;margin-top:7px;">
-            <button class="bill-save-btn" id="bill-save-btn">Save amounts</button>
+        <button class="collapsible-btn" id="bills-toggle">
+          <span><i class="ti ti-receipt" style="font-size:12px;margin-right:5px;vertical-align:-1px;"></i>Monthly bills</span>
+          <i class="ti ti-chevron-down caret"></i>
+        </button>
+        <div class="collapsible-body" id="bills-body">
+          <div class="duty-card">
+            <div class="bill-edit-row">
+              <i class="ti ti-home bill-edit-icon"></i>
+              <span class="bill-edit-label">Rent (each)</span>
+              <span style="font-size:11px;color:var(--text3);margin-right:2px;">$</span>
+              <input class="bill-edit-input" id="bill-rent" type="number" placeholder="—" min="0" />
+            </div>
+            <div class="bill-edit-row">
+              <i class="ti ti-wifi bill-edit-icon"></i>
+              <span class="bill-edit-label">Internet (each)</span>
+              <span style="font-size:11px;color:var(--text3);margin-right:2px;">$</span>
+              <input class="bill-edit-input" id="bill-internet" type="number" placeholder="—" min="0" />
+            </div>
+            <div class="bill-edit-row">
+              <i class="ti ti-bolt bill-edit-icon"></i>
+              <span class="bill-edit-label">Electricity (each)</span>
+              <span style="font-size:11px;color:var(--text3);margin-right:2px;">$</span>
+              <input class="bill-edit-input" id="bill-electric" type="number" placeholder="—" min="0" />
+            </div>
+            <div style="display:flex;justify-content:flex-end;margin-top:7px;">
+              <button class="bill-save-btn" id="bill-save-btn">Save amounts</button>
+            </div>
           </div>
         </div>
       </div>
 
-      <!-- CHORE SWAP -->
+      <!-- CHORE SWAP (collapsible) -->
       <div class="section">
-        <div class="section-title">Swap chores this week</div>
-        <div class="swap-panel">
-          <div class="swap-row">
-            <select class="swap-select" id="swap-a">
-              <option value="">Person A</option>
-              <option>Emily</option><option>Alex</option><option>Chae</option><option>Keren</option>
-            </select>
-            <span style="font-size:11px;color:var(--text3);">↔</span>
-            <select class="swap-select" id="swap-b">
-              <option value="">Person B</option>
-              <option>Emily</option><option>Alex</option><option>Chae</option><option>Keren</option>
-            </select>
-            <button class="swap-btn" id="swap-submit">Swap</button>
+        <button class="collapsible-btn" id="swap-toggle">
+          <span><i class="ti ti-arrows-exchange" style="font-size:12px;margin-right:5px;vertical-align:-1px;"></i>Swap chores this week</span>
+          <i class="ti ti-chevron-down caret"></i>
+        </button>
+        <div class="collapsible-body" id="swap-body">
+          <div class="swap-panel">
+            <div class="swap-row">
+              <select class="swap-select" id="swap-a">
+                <option value="">Person A</option>
+                <option>Emily</option><option>Alex</option><option>Chae</option><option>Keren</option>
+              </select>
+              <span style="font-size:11px;color:var(--text3);">↔</span>
+              <select class="swap-select" id="swap-b">
+                <option value="">Person B</option>
+                <option>Emily</option><option>Alex</option><option>Chae</option><option>Keren</option>
+              </select>
+              <button class="swap-btn" id="swap-submit">Swap</button>
+            </div>
+            <div id="active-swaps"></div>
           </div>
-          <div id="active-swaps"></div>
         </div>
       </div>
 
@@ -723,6 +741,16 @@ document.getElementById('grocery-input').addEventListener('keydown',e=>{if(e.key
 document.getElementById('clear-done-btn').addEventListener('click',clearDone);
 document.getElementById('prev-btn').addEventListener('click',()=>{viewM--;if(viewM<0){viewM=11;viewY--;}selDay=null;renderCalendar();renderDayPanel();});
 document.getElementById('next-btn').addEventListener('click',()=>{viewM++;if(viewM>11){viewM=0;viewY++;}selDay=null;renderCalendar();renderDayPanel();});
+
+// collapsibles
+document.getElementById('bills-toggle').addEventListener('click', function() {
+  this.classList.toggle('open');
+  document.getElementById('bills-body').classList.toggle('open');
+});
+document.getElementById('swap-toggle').addEventListener('click', function() {
+  this.classList.toggle('open');
+  document.getElementById('swap-body').classList.toggle('open');
+});
 
 // init
 renderCalendar();
